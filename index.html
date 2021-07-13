@@ -5,14 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script>
+        function welkom_alert(){
+            var elem = document.getElementById("bericht");
+            if(elem.value == "hallo"){
+                alert("welkom");
+            }
+            if(elem.value =="doei"){
+                alert("groeten")
+            }
+        }
+    </script>
 </head>
 <body>
-    <div>start</div>
+    <div>
 
-    update
+    </div>
 
-    //extra commit
-    //verandering
-    //nogmaals^2
+    <style>
+
+    </style>
+
+    <p>
+        <label for="bericht">Input: </label>
+        <input id="bericht">
+        <br></br>
+        <input type="button" value="groeten" onclick=welkom_alert()>
+    </p>
 </body>
 </html>
