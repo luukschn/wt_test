@@ -9,13 +9,26 @@
     <script>
         function e_zoeker(){
             var elem = document.getElementById("bericht").value;
-            console.log(elem.value)
+
+            var zoek_letter = document.getElementById("letter").value;
+
+            var let_counter = 0
             
-            for(var i = 0; i < 5; i++){
-                if(elem[i] == "e"){
-                    alert("e!")
+            for(var i = 0; i < elem.length ; i++)
+            {
+                console.log(elem[i])
+                
+                if(elem[i] == zoek_letter)
+                {
+                    let_counter ++
                 }
             }
+
+            if(let_counter > 0)
+            {
+                alert(let_counter)
+            }
+            
           
             }
             
@@ -33,6 +46,9 @@
     <p>
         <div>
             <input id="bericht">
+        </div>
+        <div>
+            <input id="letter">
         </div>
         <div>
             <input type="button" value="E-knop" onclick="e_zoeker()">
