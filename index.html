@@ -9,15 +9,27 @@
     <script>
 
         var aantalkliks_glob = 0;
-
-        var output = document.getElementById('output');
-
+        const button_array =[];
 
         function buttonHistory(button_parameter)
         {
-            elem = document.getElementById('output').innerHTML;
-
-            document.getElementById('output').innerHTML += button_parameter[1];
+            var output = document.getElementById('output')
+            
+            if(button_array.length == 0){
+                output.innerHTML += button_parameter[1];
+                button_array.push(button_parameter[1]);
+            } else if(button_array.length > 0 && button_array.length < 4){
+                for(var x = 0; x < button_array.length; x++){
+                    counter = 0;
+                    if(button_array[x] == button_parameter[1]){
+                        counter ++;
+                    }
+                }
+                if(counter == 0){
+                    output.innerHTML += button_parameter[1];
+                    button_array.push(button_parameter[1])
+                }
+            }
 
             aantalkliks_glob ++;
      
