@@ -22,41 +22,16 @@
                     document.getElementById("img_A").src="https://media.nu.nl/m/9bkxzuiakueg_wd1280.jpg/kom-genieten-van-winter-in-groningen.jpg";
                 }else if(aantalkliks_glob_a == seizoenen.lente[i]){
                     document.getElementById("img_A").src="http://florakade.nl/wp-content/uploads/2019/04/lente-2019-florakade-15.jpg";
+                    document.getElementById("img_B").src="https://www.rtlnieuws.nl/sites/default/files/content/images/2021/01/07/GettyImages-671410616.jpg?itok=j5CzSx9l&offsetX=0&offsetY=543&cropWidth=1732&cropHeight=974&width=1024&height=576&impolicy=dynamic"
                 }else if(aantalkliks_glob_a == seizoenen.zomer[i]){
                     document.getElementById("img_A").src="https://media.indebuurt.nl/groningen/2020/05/11150837/groningen-pixabay-scaled.jpg";
+                    document.getElementById("img_B").src="https://kunstmestvrijeachterhoek.nl/wp-content/uploads/2020/06/groen-gras.jpg"
                 }else if(aantalkliks_glob_a == seizoenen.herfst[i]){
                     document.getElementById("img_A").src="https://www.sikkom.nl/wp-content/uploads/2016/10/Herfstfoto-Stanzi-Systra.jpg";
                 }
             }
         
-        }
-
-        function verwissel_img_b(){
-            aantalkliks_glob_b ++;
-            for(var i = 0; i < 5; i++){
-                if(aantalkliks_glob_b == seizoenen.winter[i]
-                ){
-                    document.getElementById("img_B").src="https://media.nu.nl/m/9bkxzuiakueg_wd1280.jpg/kom-genieten-van-winter-in-groningen.jpg";
-                }else if(aantalkliks_glob_b == seizoenen.lente[i]){
-                    document.getElementById("img_B").src="http://florakade.nl/wp-content/uploads/2019/04/lente-2019-florakade-15.jpg";
-                }else if(aantalkliks_glob_b == seizoenen.zomer[i]){
-                    document.getElementById("img_B").src="https://media.indebuurt.nl/groningen/2020/05/11150837/groningen-pixabay-scaled.jpg";
-                }else if(aantalkliks_glob_b == seizoenen.herfst[i]){
-                    document.getElementById("img_B").src="https://www.sikkom.nl/wp-content/uploads/2016/10/Herfstfoto-Stanzi-Systra.jpg";
-                }
-            }
-        
-        }
-
-        function zelfde_test(){
-            if(document.getElementById("img_A").src == document.getElementById("img_B").src){
-                console.log("Hetzelfde")
-            }else{
-                console.log("Niet hetzelfde")
-            }
-        }
-
-                  
+        }   
     </script>
 
     <style>
@@ -65,14 +40,8 @@
 </head>
 <body>
     <p>
-        <div>
-            <input type="button" value="Knop A" onclick=verwissel_img_a()>
-            <input type="button" value="Knop B" onclick=verwissel_img_b()>
-            <input type="button" value="Knop C" onclick=zelfde_test()>
-        </div>
-
-        <img id='img_A' src='https://media.nu.nl/m/9bkxzuiakueg_wd1280.jpg/kom-genieten-van-winter-in-groningen.jpg' style="width:500px;height:400px;">
-        <img id='img_B' src='https://media.nu.nl/m/9bkxzuiakueg_wd1280.jpg/kom-genieten-van-winter-in-groningen.jpg' style="width:500px;height:400px;">
+        <img id='img_A' src='https://media.nu.nl/m/9bkxzuiakueg_wd1280.jpg/kom-genieten-van-winter-in-groningen.jpg' style="width:500px;height:400px;" onclick="verwissel_img_a()">
+        <img id='img_B' src='https://kunstmestvrijeachterhoek.nl/wp-content/uploads/2020/06/groen-gras.jpg' style="width:500px;height:400px;">
 
         <div id="output"></div>
     </p>
