@@ -4,88 +4,105 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Boter-kaas-en-eieren</title>
 
     <script>
-
-        var vakantie_lijst = [];
-        counter = -1
-            
-        function check_woord(input){
-            var item = document.getElementById("item").value;
-
-            if(vakantie_lijst.length == 0)
+        click_counter = 0;
+        function BKE(id)
+        {
+            if(document.getElementById(id).src == "https://dictionary.cambridge.org/es-LA/images/thumb/cross_noun_002_09265.jpg?version=5.0.177" || document.getElementById(id).src == "https://upload.wikimedia.org/wikipedia/commons/a/a0/Circle_-_black_simple.svg")
             {
-                correct();
-            } 
+                alert("niet mogelijk")
+            }
             else
             {
-                same_counter = 0;
-                for(var x=0; x < vakantie_lijst.length; x++)
+                if(click_counter < 9)
                 {
-                    if(item == vakantie_lijst[x])
-                    {
-                        same_counter ++
-                    }
-                }
+                    click_counter ++
 
-                if(same_counter == 0)
-                {
-                    len = vakantie_lijst[counter].length
-
-                    if(vakantie_lijst[counter].charAt(len - 1) == item[0])
+                    if(click_counter % 2 != 0)
                     {
-                        incorrect();
+                        document.getElementById(id).src="https://dictionary.cambridge.org/es-LA/images/thumb/cross_noun_002_09265.jpg?version=5.0.177"
                     }
                     else
                     {
-                        correct();
+                        document.getElementById(id).src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Circle_-_black_simple.svg"
                     }
-                } 
-                else
-                {
-                    incorrect();
                 }
-                
+
             }
         }
-        
-        function correct(){
-            alert("dit mag mee!");
-            var item = document.getElementById("item").value;
-            vakantie_lijst.push(item);
-            counter++;
-            document.getElementById("output").innerHTML += item+"<br>";
+
+        function winner_check()
+        {
+            if(document.getElementById("1.1").src == document.getElementById("1.2").src && document.getElementById("1.2").src == document.getElementById("1.3").src)
+                {
+                    winner(document.getElementById("1.1").src);
+                }
+                else if(document.getElementById("2.1").src == document.getElementById("2.2").src && document.getElementById("2.2").src == document.getElementById("2.3").src)
+                {
+                    winner(document.getElementById("2.1").src);
+                }
+                else if(document.getElementById("3.1").src == document.getElementById("3.2").src && document.getElementById("3.2").src == document.getElementById("3.3").src)
+                {
+                    winner(document.getElementById("3.1").src);
+                }
+                else if(document.getElementById("1.1").src == document.getElementById("2.1").src && document.getElementById("2.1").src == document.getElementById("3.1").src)
+                {
+                    winner(document.getElementById("1.1").src);
+                }
+                else if(document.getElementById("1.2").src == document.getElementById("2.2").src && document.getElementById("2.2").src == document.getElementById("3.2").src)
+                {
+                    winner(document.getElementById("1.2").src);
+                }
+                else if(document.getElementById("1.3").src == document.getElementById("2.3").src && document.getElementById("2.3").src == document.getElementById("3.3").src)
+                {
+                    winner(document.getElementById("1.3").src);
+                }
+                else if(document.getElementById("1.1").src == document.getElementById("2.2").src && document.getElementById("2.2").src == document.getElementById("3.3").src)
+                {
+                    winner(document.getElementById("1.1").src);
+                }
+                else if(document.getElementById("1.3").src == document.getElementById("2.2").src && document.getElementById("2.2").src == document.getElementById("3.1").src)
+                {
+                    winner(document.getElementById("1.3").src);
+                }
         }
 
-        function incorrect(){
-            alert("dit mag niet meer mee:(")
+        function winner(id){
+            if(id == "https://dictionary.cambridge.org/es-LA/images/thumb/cross_noun_002_09265.jpg?version=5.0.177"){
+                console.log("Cross wins")
+            } else if (id == "https://upload.wikimedia.org/wikipedia/commons/a/a0/Circle_-_black_simple.svg"){
+                console.log("Circle wins")
+            }
         }
+
     </script>
 
     <style>
-        div#output{
-            background-color : rgb(30, 175, 175);
-            border : 2px dashed rgb(85, 75, 18);
-            padding: 12px;
-            border-radius : 4px;
-            margin: 14px;
-            display:inline-block;
-            width:300px;
-            box-shadow: 12px 12px 8px rgb(71, 70, 70);
-            color:rgb(253, 133, 153);
-            font-size: 35;
-            font-family: 'Arial';
-        }
     </style>
 </head>
 <body>
     <p>
         <div>
-            <input id="item">
-            <input type="button" onclick="check_woord();" value="Dit neem ik mee">
+            <img src="https://mathematicslounge.files.wordpress.com/2014/07/empty_square1.png" id = "1.1" width="100" height="100" onclick="BKE(this.id)">
+            <img src="https://mathematicslounge.files.wordpress.com/2014/07/empty_square1.png" id = "1.2" width="100" height="100" onclick="BKE(this.id)">
+            <img src="https://mathematicslounge.files.wordpress.com/2014/07/empty_square1.png" id = "1.3" width="100" height="100" onclick="BKE(this.id)">
         </div>
-        <div id="output"></div>
+        <div>
+            <img src="https://mathematicslounge.files.wordpress.com/2014/07/empty_square1.png" id = "2.1" width="100" height="100" onclick="BKE(this.id)">
+            <img src="https://mathematicslounge.files.wordpress.com/2014/07/empty_square1.png" id = "2.2" width="100" height="100" onclick="BKE(this.id)">
+            <img src="https://mathematicslounge.files.wordpress.com/2014/07/empty_square1.png" id = "2.3" width="100" height="100" onclick="BKE(this.id)">
+        </div>
+        <div>
+            <img src="https://mathematicslounge.files.wordpress.com/2014/07/empty_square1.png" id = "3.1" width="100" height="100" onclick="BKE(this.id)">
+            <img src="https://mathematicslounge.files.wordpress.com/2014/07/empty_square1.png" id = "3.2" width="100" height="100" onclick="BKE(this.id)">
+            <img src="https://mathematicslounge.files.wordpress.com/2014/07/empty_square1.png" id = "3.3" width="100" height="100" onclick="BKE(this.id)">
+        </div>
+
+        <button id="winner" onclick="winner_check()">winner check</button>
+
+
     </p>
 </body>
 </html>
