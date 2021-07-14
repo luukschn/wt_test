@@ -8,41 +8,83 @@
 
     <script>
 
-        var aantalkliks_glob_a = 0;
-        var aantalkliks_glob_b = 0;
-        var seizoenen = {winter: [0, 4, 8, 12, 16], lente: [1, 5, 9, 13, 17], zomer: [2, 6, 10, 14, 18], herfst: [3, 7, 11, 15, 19]}
-        var seizoen_foto= ["https://media.nu.nl/m/9bkxzuiakueg_wd1280.jpg/kom-genieten-van-winter-in-groningen.jpg", "http://florakade.nl/wp-content/uploads/2019/04/lente-2019-florakade-15.jpg",
-            "https://media.indebuurt.nl/groningen/2020/05/11150837/groningen-pixabay-scaled.jpg", "https://www.sikkom.nl/wp-content/uploads/2016/10/Herfstfoto-Stanzi-Systra.jpg"];
+        var vakantie_lijst = [];
+        counter = -1
             
-        function verwissel_img_a() {
-            aantalkliks_glob_a ++;
-            for(var i = 0; i < 5; i++){
-                if(aantalkliks_glob_a == seizoenen.winter[i]
-                ){
-                    document.getElementById("img_A").src="https://media.nu.nl/m/9bkxzuiakueg_wd1280.jpg/kom-genieten-van-winter-in-groningen.jpg";
-                }else if(aantalkliks_glob_a == seizoenen.lente[i]){
-                    document.getElementById("img_A").src="http://florakade.nl/wp-content/uploads/2019/04/lente-2019-florakade-15.jpg";
-                    document.getElementById("img_B").src="https://www.rtlnieuws.nl/sites/default/files/content/images/2021/01/07/GettyImages-671410616.jpg?itok=j5CzSx9l&offsetX=0&offsetY=543&cropWidth=1732&cropHeight=974&width=1024&height=576&impolicy=dynamic"
-                }else if(aantalkliks_glob_a == seizoenen.zomer[i]){
-                    document.getElementById("img_A").src="https://media.indebuurt.nl/groningen/2020/05/11150837/groningen-pixabay-scaled.jpg";
-                    document.getElementById("img_B").src="https://kunstmestvrijeachterhoek.nl/wp-content/uploads/2020/06/groen-gras.jpg"
-                }else if(aantalkliks_glob_a == seizoenen.herfst[i]){
-                    document.getElementById("img_A").src="https://www.sikkom.nl/wp-content/uploads/2016/10/Herfstfoto-Stanzi-Systra.jpg";
+        function check_woord(input){
+            var item = document.getElementById("item").value;
+
+            if(vakantie_lijst.length == 0)
+            {
+                correct();
+            } 
+            else
+            {
+                same_counter = 0;
+                for(var x=0; x < vakantie_lijst.length; x++)
+                {
+                    if(item == vakantie_lijst[x])
+                    {
+                        same_counter ++
+                    }
                 }
+
+                if(same_counter == 0)
+                {
+                    len = vakantie_lijst[counter].length
+
+                    if(vakantie_lijst[counter].charAt(len - 1) == item[0])
+                    {
+                        incorrect();
+                    }
+                    else
+                    {
+                        correct();
+                    }
+                } 
+                else
+                {
+                    incorrect();
+                }
+                
             }
+        }
         
-        }   
+        function correct(){
+            alert("dit mag mee!");
+            var item = document.getElementById("item").value;
+            vakantie_lijst.push(item);
+            counter++;
+            document.getElementById("output").innerHTML += item+"<br>";
+        }
+
+        function incorrect(){
+            alert("dit mag niet meer mee:(")
+        }
     </script>
 
     <style>
-
+        div#output{
+            background-color : rgb(30, 175, 175);
+            border : 2px dashed rgb(85, 75, 18);
+            padding: 12px;
+            border-radius : 4px;
+            margin: 14px;
+            display:inline-block;
+            width:300px;
+            box-shadow: 12px 12px 8px rgb(71, 70, 70);
+            color:rgb(253, 133, 153);
+            font-size: 35;
+            font-family: 'Arial';
+        }
     </style>
 </head>
 <body>
     <p>
-        <img id='img_A' src='https://media.nu.nl/m/9bkxzuiakueg_wd1280.jpg/kom-genieten-van-winter-in-groningen.jpg' style="width:500px;height:400px;" onclick="verwissel_img_a()">
-        <img id='img_B' src='https://kunstmestvrijeachterhoek.nl/wp-content/uploads/2020/06/groen-gras.jpg' style="width:500px;height:400px;">
-
+        <div>
+            <input id="item">
+            <input type="button" onclick="check_woord();" value="Dit neem ik mee">
+        </div>
         <div id="output"></div>
     </p>
 </body>
