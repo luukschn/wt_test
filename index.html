@@ -8,37 +8,51 @@
 
     <script>
 
-        var aantalkliks_glob = 0;
-        const button_array =[];
+        var aantalkliks_glob = -1;
 
-        function buttonHistory(button_parameter)
+        function wissel_seizoen()
         {
-            var output = document.getElementById('output')
-            
-            if(button_array.length == 0){
-                output.innerHTML += button_parameter[1];
-                button_array.push(button_parameter[1]);
-            } else if(button_array.length > 0 && button_array.length < 4){
-                for(var x = 0; x < button_array.length; x++){
-                    counter = 0;
-                    if(button_array[x] == button_parameter[1]){
-                        counter ++;
-                    }
-                }
-                if(counter == 0){
-                    output.innerHTML += button_parameter[1];
-                    button_array.push(button_parameter[1])
-                }
-            }
+            aantalkliks_glob ++
 
-            aantalkliks_glob ++;
-     
+            var seizoenen = {winter: [0, 4, 8, 12, 16], lente: [1, 5, 9, 13, 17], zomer: [2, 6, 10, 14, 18], herfst: [3, 7, 11, 15, 19]}
+
+            var seizoen_foto= ["https://media.nu.nl/m/9bkxzuiakueg_wd1280.jpg/kom-genieten-van-winter-in-groningen.jpg", "http://florakade.nl/wp-content/uploads/2019/04/lente-2019-florakade-15.jpg",
+            "https://media.indebuurt.nl/groningen/2020/05/11150837/groningen-pixabay-scaled.jpg", "https://www.sikkom.nl/wp-content/uploads/2016/10/Herfstfoto-Stanzi-Systra.jpg"];
+            
+            var img = document.createElement("img");
+
+            console.log(aantalkliks_glob)
+            console.log(seizoen_foto[aantalkliks_glob])
+            img.src=seizoen_foto[aantalkliks_glob];
+
+
+            var src = document.getElementById("output");
+
+            src.appendChild(img);
+
+            
+
+            
+        
+            
+            //for(var i = 0; i < 5; i++){
+             //   if(aantalkliks_glob == parseInt(seizoenen.winter[i])){
+              //      console.log("winter " + i)
+               // } else if(aantalkliks_glob == parseInt(seizoenen.lente[i])){
+               //     console.log("lente "+ i)
+               // } else if(aantalkliks_glob == parseInt(seizoenen.zomer[i])){
+               //     console.log("zomer " + i)
+               // } else if(aantalkliks_glob == parseInt(seizoenen.herfst[i])){
+               //     console.log("herfst "+ i)
+               // }
+            //}
+                
         }
                   
     </script>
 
     <style>
-        div#output{
+        /*div#output{
             background-color : blue;
             border : 2px dashed red;
             padding: 12px;
@@ -50,18 +64,22 @@
             color:pink;
             font-size:30;
             font-family:'Times New Roman', Times, serif;
-        }
+        }*/
     </style>
 </head>
 <body>
     <p>
-    
         <div>
-            <input class="buttons" id="bA" type="button" value="A" onclick=buttonHistory(this.id)> 
-            <input class="buttons" id="bB" type="button" value="B" onclick=buttonHistory(this.id)>
-            <input class="buttons" id="bC" type="button" value="C" onclick=buttonHistory(this.id)>
-            <input class="buttons" id="bD" type="button" value="D" onclick=buttonHistory(this.id)> 
+            <!--<input type="button" value="wissel seizoen" onclick=wissel_seizoen()> -->
+            <input type="button" value="zomer" onclick="document.getElementById('seizoen_img').src='https://media.indebuurt.nl/groningen/2020/05/11150837/groningen-pixabay-scaled.jpg'">
         </div> 
+        <div>
+            <input type="button" value="winter" onclick="document.getElementById('seizoen_img').src='https://media.nu.nl/m/9bkxzuiakueg_wd1280.jpg/kom-genieten-van-winter-in-groningen.jpg'">
+        </div>
+
+        <img id='seizoen_img' src='https://media.nu.nl/m/9bkxzuiakueg_wd1280.jpg/kom-genieten-van-winter-in-groningen.jpg'>
+
+        
 
         <div id="output"></div>
     </p>
