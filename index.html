@@ -7,52 +7,51 @@
     <title>Document</title>
 
     <script>
-        function e_zoeker(){
-            var elem = document.getElementById("bericht").value;
 
-            var zoek_letter = document.getElementById("letter").value;
+        var aantalkliks_glob = 0;
 
-            var let_counter = 0
-            
-            for(var i = 0; i < elem.length ; i++)
-            {
-                console.log(elem[i])
-                
-                if(elem[i] == zoek_letter)
-                {
-                    let_counter ++
-                }
-            }
+        var output = document.getElementById('output');
 
-            if(let_counter > 0)
-            {
-                alert(let_counter)
-            }
-            
-          
-            }
-            
+
+        function buttonHistory(button_parameter)
+        {
+            elem = document.getElementById('output').innerHTML;
+
+            document.getElementById('output').innerHTML += button_parameter[1];
+
+            aantalkliks_glob ++;
+     
+        }
+                  
     </script>
-</head>
-<body>
-    <div>
-
-    </div>
 
     <style>
-
+        div#output{
+            background-color : blue;
+            border : 2px dashed red;
+            padding: 12px;
+            border-radius : 4px;
+            margin: 14px;
+            display:inline-block;
+            width:300px;
+            box-shadow: 12px 12px 8px black;
+            color:pink;
+            font-size:30;
+            font-family:'Times New Roman', Times, serif;
+        }
     </style>
-
+</head>
+<body>
     <p>
+    
         <div>
-            <input id="bericht">
-        </div>
-        <div>
-            <input id="letter">
-        </div>
-        <div>
-            <input type="button" value="E-knop" onclick="e_zoeker()">
-        </div>    
+            <input class="buttons" id="bA" type="button" value="A" onclick=buttonHistory(this.id)> 
+            <input class="buttons" id="bB" type="button" value="B" onclick=buttonHistory(this.id)>
+            <input class="buttons" id="bC" type="button" value="C" onclick=buttonHistory(this.id)>
+            <input class="buttons" id="bD" type="button" value="D" onclick=buttonHistory(this.id)> 
+        </div> 
+
+        <div id="output"></div>
     </p>
 </body>
 </html>
